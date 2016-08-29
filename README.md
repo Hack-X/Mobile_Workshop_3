@@ -1,4 +1,4 @@
-# Mobile_Workshop_1
+# Mobile Workshop #1
 
 
 Objectifs de l'atelier :
@@ -9,7 +9,7 @@ Objectifs de l'atelier :
 
 Pré-requis :
 
-* Avoir installé l'environnement de travail décrit dans le [workshop Back #1](https://github.com/Workshop-Polytechnique/Back_Workshop_1) et en particulier `node`, `cordova` et `ionic`.
+* Avoir installé l'environnement de travail décrit dans le [workshop Back #1](https://github.com/Workshop-Polytechnique/Back_Workshop_1) et en particulier `node`, `cordova` et `ionic`, ainsi que la création d'un compte Github.
 
 
 # Création d'une application mobile avec Ionic et sauvegarde sous Github
@@ -32,4 +32,24 @@ Pré-requis :
 * En faisant un clic-droit puis `Inspecter l'élément` sur la page, vous allez ouvrir l'inspecteur Chrome. En cliquant sur la petit icone de mobile / tablette, vous pourrez ainsi simuler un téléphone mobile de votre choix. À ce stade, l'application doit ressembler à ça :
 
 <img src="tutorial_resources/ionic_serve_1.png" alt="Chrome with Ionic" style="width:600px">
+
+# Création du projet sur Git & Github
+
+* Sur Github, on va créer un nouveau projet public avec le nom de son choix, `showTonightApp` ici, sans aucun fichier (pas de Readme). Vous arriverez alors sur une page qui ressemble à ça :
+
+<img src="tutorial_resources/github.png" alt="Github" style="width:600px">
+
+* On va maintenant suivre les instructions de Github pour "create a new repository on the command line" et dans le dossier `showTonightApp` sur son terminal, on va exécuter :
+
+
+        $ git init
+        $ git add -A
+        $ git commit -m "first commit"
+        $ git remote add origin https://github.com/Workshop-Polytechnique/showTonightApp.git
+        $ git push -u origin master
+        
+* En rafraichissant la page, on va maintenant avoir accès à son projet sur Github !
+* Optionel : on peut ajouter à ce moment là un fichier `README.md` afin de décrire son projet.
+
+
 
