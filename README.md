@@ -52,5 +52,9 @@ Pré-requis :
 * En rafraichissant la page, on va maintenant avoir accès à son projet sur Github !
 * Optionel : on peut ajouter à ce moment là un fichier `README.md` afin de décrire son projet.
 
+## Application Statique ShowTonight
+
+On va maintenant s'attaquer à notre application en la faisant correspondre à nos mockups, sans la brancher sur l'API pour l'instant.
+
 
 
