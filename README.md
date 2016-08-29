@@ -54,7 +54,26 @@ Pré-requis :
 
 ## Application Statique ShowTonight
 
-On va maintenant s'attaquer à notre application en la faisant correspondre à nos mockups, sans la brancher sur l'API pour l'instant.
+On va maintenant s'attaquer à notre application en la faisant correspondre à nos mockups, sans la brancher sur l'API pour l'instant. 
+Notre objectif sera :
+* d'avoir un premier onglet présentant l'application
+* d'avoir une liste des spectacles disponibles sur le second onglet
+* de pouvoir cliquer sur un spectacle pour voir le détail
+
+Pour commencer, nous allons ouvrir le dossier de notre application avec Sublime Text et lancer l'application avec la commande `ionic serve`.
+
+### Découverte de la structure et suppression du 3ème onglet.
+
+L'essentiel du code de l'application est situé dans le dossier `www`. On y trouvera :
+
+* `www/css/` : le dossier contenant les fichiers de style.
+* `www/img/` : le dossier contenant les images nécessaires en local (qui ne seront pas chargées depuis internet)
+* `www/js/` : le dossier contenant l'essentiel de la logique.
+* `www/lib/` : le dossier contenant les librairies externes nécessaires à faire fonctionner notre application.
+* `www/templates/` : le dossier contenant les templates des pages.
+* `www/index.html` : c'est le fichier central chargé au lancement de l'application.
+
+
 
 
 
