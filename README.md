@@ -68,10 +68,16 @@ L'essentiel du code de l'application est situé dans le dossier `www`. On y trou
 
 * `www/css/` : le dossier contenant les fichiers de style.
 * `www/img/` : le dossier contenant les images nécessaires en local (qui ne seront pas chargées depuis internet)
-* `www/js/` : le dossier contenant l'essentiel de la logique.
+* `www/js/` : le dossier contenant l'essentiel de la logique, dans les fichiers `app.js` (qui comprend notamment le système de routes), `controllers.js` (qui contient la logique propre à chaque page) et (`services.js` qui contient la logique de récupération des données, en local pour le moment)
 * `www/lib/` : le dossier contenant les librairies externes nécessaires à faire fonctionner notre application.
-* `www/templates/` : le dossier contenant les templates des pages.
+* `www/templates/` : le dossier contenant les templates des pages ainsi que du système d'onglets dans le fichier `tabs.html`.
 * `www/index.html` : c'est le fichier central chargé au lancement de l'application.
+
+
+Nous allons effectuer un certain nombre de modifications dans ces fichiers. Nous garderons le nom de la Home `Dashboard` inchangé, mais nous allons modifier les noms des fichiers et des routes `chats` en `shows` et `chat-detail` en `show-detail`.
+
+Voilà ce qu'il faut modifier pour avoir les bonnes routes et les bons fichiers (n'hésiter pas à aller voir les 
+* Dans le fichier tabs, on va enlever la référence au 3ème onglet en la supprimant simplement, et on va modifier à la fois les icones (`icon-off` et `icon-on`) des 2 onglets, leur `title` ainsi que la route `href`
 
 
 * Vous trouverez un point complet sur les modifications dans ce [commit]( https://github.com/Workshop-Polytechnique/Mobile_Workshop_1/commit/685a854cb16d919d33529a8f5c9a5ca3e5f78691)
