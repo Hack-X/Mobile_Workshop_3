@@ -31,5 +31,5 @@ Pré-requis :
 * A ce stade, on vous recommande **très fortement** d'utiliser Chrome comme navigateur si ce n'est pas votre navigateur par défaut.
 * En faisant un clic-droit puis `Inspecter l'élément` sur la page, vous allez ouvrir l'inspecteur Chrome. En cliquant sur la petit icone de mobile / tablette, vous pourrez ainsi simuler un téléphone mobile de votre choix. À ce stade, l'application doit ressembler à ça :
 
-<img src="tutorial_resources.ionic_serve_1.png" alt="Chrome with Ionic" style="width:600px">
+<img src="tutorial_resources/ionic_serve_1.png" alt="Chrome with Ionic" style="width:600px">
 
