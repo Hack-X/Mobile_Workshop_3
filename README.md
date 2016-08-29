@@ -52,7 +52,7 @@ Pré-requis :
 * En rafraichissant la page, on va maintenant avoir accès à son projet sur Github !
 * Optionel : on peut ajouter à ce moment là un fichier `README.md` afin de décrire son projet.
 
-## Application Statique ShowTonight
+## Personnalisation de l'application ShowTonight
 
 On va maintenant s'attaquer à notre application en la faisant correspondre à nos mockups, sans la brancher sur l'API pour l'instant. 
 Notre objectif sera :
@@ -72,6 +72,9 @@ L'essentiel du code de l'application est situé dans le dossier `www`. On y trou
 * `www/lib/` : le dossier contenant les librairies externes nécessaires à faire fonctionner notre application.
 * `www/templates/` : le dossier contenant les templates des pages.
 * `www/index.html` : c'est le fichier central chargé au lancement de l'application.
+
+
+
 
 
 
