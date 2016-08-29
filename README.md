@@ -13,7 +13,7 @@ Pré-requis :
 * Avoir installé l'environnement de travail décrit dans le [workshop Back #1](https://github.com/Workshop-Polytechnique/Back_Workshop_1) et en particulier `node`, `cordova` et `ionic`, ainsi que la création d'un compte Github.
 
 
-# Création d'une application mobile avec Ionic et sauvegarde sous Github
+## Création d'une application mobile avec Ionic et sauvegarde sous Github
 
 ### Création de l'application
 
@@ -34,7 +34,7 @@ Pré-requis :
 
 <img src="tutorial_resources/ionic_serve_1.png" alt="Chrome with Ionic" style="width:600px">
 
-# Création du projet sur Git & Github
+## Création du projet sur Git & Github
 
 * Sur Github, on va créer un nouveau projet public avec le nom de son choix, `showTonightApp` ici, sans aucun fichier (pas de Readme). Vous arriverez alors sur une page qui ressemble à ça :
 
