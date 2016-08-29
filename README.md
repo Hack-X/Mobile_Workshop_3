@@ -74,7 +74,7 @@ L'essentiel du code de l'application est situé dans le dossier `www`. On y trou
 * `www/index.html` : c'est le fichier central chargé au lancement de l'application.
 
 
-
+* Vous trouverez un point complet sur les modifications dans ce [commit]( https://github.com/Workshop-Polytechnique/Mobile_Workshop_1/commit/685a854cb16d919d33529a8f5c9a5ca3e5f78691)
 
 
 
