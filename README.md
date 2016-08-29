@@ -1,4 +1,5 @@
-# Mobile Workshop #1
+Mobile Workshop #1
+=======
 
 
 Objectifs de l'atelier :
@@ -12,7 +13,7 @@ Pré-requis :
 * Avoir installé l'environnement de travail décrit dans le [workshop Back #1](https://github.com/Workshop-Polytechnique/Back_Workshop_1) et en particulier `node`, `cordova` et `ionic`, ainsi que la création d'un compte Github.
 
 
-# Création d'une application mobile avec Ionic et sauvegarde sous Github
+## Création d'une application mobile avec Ionic et sauvegarde sous Github
 
 ### Création de l'application
 
@@ -33,7 +34,7 @@ Pré-requis :
 
 <img src="tutorial_resources/ionic_serve_1.png" alt="Chrome with Ionic" style="width:600px">
 
-# Création du projet sur Git & Github
+## Création du projet sur Git & Github
 
 * Sur Github, on va créer un nouveau projet public avec le nom de son choix, `showTonightApp` ici, sans aucun fichier (pas de Readme). Vous arriverez alors sur une page qui ressemble à ça :
 
@@ -50,6 +51,29 @@ Pré-requis :
         
 * En rafraichissant la page, on va maintenant avoir accès à son projet sur Github !
 * Optionel : on peut ajouter à ce moment là un fichier `README.md` afin de décrire son projet.
+
+## Application Statique ShowTonight
+
+On va maintenant s'attaquer à notre application en la faisant correspondre à nos mockups, sans la brancher sur l'API pour l'instant. 
+Notre objectif sera :
+* d'avoir un premier onglet présentant l'application
+* d'avoir une liste des spectacles disponibles sur le second onglet
+* de pouvoir cliquer sur un spectacle pour voir le détail
+
+Pour commencer, nous allons ouvrir le dossier de notre application avec Sublime Text et lancer l'application avec la commande `ionic serve`.
+
+### Découverte de la structure et suppression du 3ème onglet.
+
+L'essentiel du code de l'application est situé dans le dossier `www`. On y trouvera :
+
+* `www/css/` : le dossier contenant les fichiers de style.
+* `www/img/` : le dossier contenant les images nécessaires en local (qui ne seront pas chargées depuis internet)
+* `www/js/` : le dossier contenant l'essentiel de la logique.
+* `www/lib/` : le dossier contenant les librairies externes nécessaires à faire fonctionner notre application.
+* `www/templates/` : le dossier contenant les templates des pages.
+* `www/index.html` : c'est le fichier central chargé au lancement de l'application.
+
+
 
 
 
