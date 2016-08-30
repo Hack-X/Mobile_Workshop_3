@@ -6,12 +6,21 @@
 -->
 <ion-view view-title="{{show.name}}">
   <ion-content class="padding">
-    <img ng-src="{{show.image}}" style="width: 64px; height: 64px">
-    <p>
-      {{show.description}}
-    </p>
-    <button class="button button-block button-positive">
-      Réserver
-    </button>
+    <div class="list card">
+      <div class="item">
+        <h2>{{show.name}}</h2>
+        <p>{{show.date}}</p>
+      </div>
+
+      <div class="item item-body">
+        <img class="full-image" ng-src="{{show.image}}">
+        <p>
+          {{show.description}}
+        </p>
+      </div>
+      <button class="button button-block button-positive">
+        Réserver pour {{show.price}}€
+      </button>
+    </div>
   </ion-content>
 </ion-view>
