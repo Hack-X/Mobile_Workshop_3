@@ -84,33 +84,33 @@ Voilà ce qu'il faut modifier pour avoir les bonnes routes et les bons fichiers 
 
 
 
-      .state('tab.dash', {
-        url: '/dash',
-        views: {
-          'tab-dash': {
-            templateUrl: 'templates/tab-dash.html',
-            controller: 'DashCtrl'
-          }
-        }
-      })
-      .state('tab.shows', {
-          url: '/shows',
+        .state('tab.dash', {
+          url: '/dash',
           views: {
-            'tab-shows': {
-              templateUrl: 'templates/tab-shows.html',
-              controller: 'ChatsCtrl'
+            'tab-dash': {
+              templateUrl: 'templates/tab-dash.html',
+              controller: 'DashCtrl'
             }
           }
         })
-        .state('tab.show-detail', {
-          url: '/shows/:showId',
-          views: {
-            'tab-shows': {
-              templateUrl: 'templates/show-detail.html',
-              controller: 'ChatDetailCtrl'
+        .state('tab.shows', {
+            url: '/shows',
+            views: {
+              'tab-shows': {
+                templateUrl: 'templates/tab-shows.html',
+                controller: 'ChatsCtrl'
+              }
             }
-          }
-      });
+          })
+          .state('tab.show-detail', {
+            url: '/shows/:showId',
+            views: {
+              'tab-shows': {
+                templateUrl: 'templates/show-detail.html',
+                controller: 'ChatDetailCtrl'
+              }
+            }
+        });
 
 * On va ensuite renommer les 2 fichiers de templates qu'on vient de décrire dans le dossier `templates` et on va supprimer le fichier `tab-account.html`.
 * Dans le fichier `tab-dash.html`, on va modifier le contenu pour lui mettre un titre adapté et un contenu correspondant à notre application :
