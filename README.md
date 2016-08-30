@@ -76,13 +76,80 @@ L'essentiel du code de l'application est situé dans le dossier `www`. On y trou
 
 Nous allons effectuer un certain nombre de modifications dans ces fichiers. Nous garderons le nom de la Home `Dashboard` inchangé, mais nous allons modifier les noms des fichiers et des routes `chats` en `shows` et `chat-detail` en `show-detail`.
 
-Voilà ce qu'il faut modifier pour avoir les bonnes routes et les bons fichiers (n'hésiter pas à aller voir les 
-* Dans le fichier tabs, on va enlever la référence au 3ème onglet en la supprimant simplement, et on va modifier à la fois les icones (`icon-off` et `icon-on`) des 2 onglets, leur `title` ainsi que la route `href`
+Voilà ce qu'il faut modifier pour avoir les bonnes routes et les bons fichiers (n'hésiter pas à aller voir les modifications précises dans les fichiers de ce projets.
+
+* Dans le fichier `www/js/app.js`, on va modifier les routes (c'est à dire les URLs) : on va commencer par retirer complètement la partie `tab.account` qui ne nous intéresse pas ici. On va ensuite modifier les routes `tab.chats` et `tab.shows` avec ces éléments :
+    * tab.chats : `chats` devient partout `shows`, on va donc avoir un `tab.shows`, dont l'url est `/shows` et la vue associée est `templates/tab-shows.html`. Dans un temps 1, on ne va pas modifier le controller associé.
+    * tab.chat-detail : `tab.chat-detail` va devenir `tab.show-detail`, l'url va devenir `/shows/:showId` et la vue associée est `templates/show-detail.html`. Dans un temps 1, on ne va pas modifier le controller associé.
+
+
+      .state('tab.dash', {
+        url: '/dash',
+        views: {
+          'tab-dash': {
+            templateUrl: 'templates/tab-dash.html',
+            controller: 'DashCtrl'
+          }
+        }
+      })
+      .state('tab.shows', {
+          url: '/shows',
+          views: {
+            'tab-shows': {
+              templateUrl: 'templates/tab-shows.html',
+              controller: 'ChatsCtrl'
+            }
+          }
+        })
+        .state('tab.show-detail', {
+          url: '/shows/:showId',
+          views: {
+            'tab-shows': {
+              templateUrl: 'templates/show-detail.html',
+              controller: 'ChatDetailCtrl'
+            }
+          }
+      });
+
+* On va ensuite renommer les 2 fichiers de templates qu'on vient de décrire dans le dossier `templates` et on va supprimer le fichier `tab-account.html`.
+* Dans le fichier `tab-dash.html`, on va modifier le contenu pour lui mettre un titre adapté et un contenu correspondant à notre application :
+
+
+
+      <ion-view view-title="Accueil">
+        <ion-content class="padding">
+          <h2>Bienvenue dans ShowTonight</h2>
+          <p>
+          Vous trouverez dans cette application des idées de spectacles fantastiques à aller voir.
+          </p>
+        </ion-content>
+      </ion-view>
+      
+      
+* Dans le fichier `tab-shows.html`, on va simplement modifier le titre pour le moment en précisant `view-title="Spectacles"`
+* Et enfin, dans le fichier `tabs.html` on va enlever la référence au 3ème onglet en la supprimant simplement, et on va modifier à la fois les icones (`icon-off` et `icon-on`) des 2 onglets, leur `title` ainsi que la route `href` pour les faire correspondre aux urls qu'on a mises dans le fichier `app.js` :
+
+
+      <ion-tabs class="tabs-icon-top tabs-color-active-positive">
+      
+        <!-- Home Tab -->
+        <ion-tab title="Home" icon-off="ion-ios-home-outline" icon-on="ion-ios-home" href="#/tab/dash">
+          <ion-nav-view name="tab-dash"></ion-nav-view>
+        </ion-tab>
+      
+        <!-- Shows Tab -->
+        <ion-tab title="Spectacles" icon-off="ion-ios-calendar-outline" icon-on="ion-ios-calendar" href="#/tab/shows">
+          <ion-nav-view name="tab-shows"></ion-nav-view>
+        </ion-tab>
+      
+      </ion-tabs>
 
 
 * Vous trouverez un point complet sur les modifications dans ce [commit]( https://github.com/Workshop-Polytechnique/Mobile_Workshop_1/commit/685a854cb16d919d33529a8f5c9a5ca3e5f78691)
 
 
+https://github.com/Workshop-Polytechnique/Mobile_Workshop_1/commit/825032e4700b6dac87a1cbd017f98a0e15dfc943
 
+https://github.com/Workshop-Polytechnique/Mobile_Workshop_1/commit/3a1ba2aee617e217ad8b60218618ec5c924c0e76
 
 
