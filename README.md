@@ -151,10 +151,17 @@ Voilà ce qu'il faut modifier pour avoir les bonnes routes et les bons fichiers 
 Voilà ce que donne votre application maintenant :
 <img src="tutorial_resources/685a854cb16d919d33529a8f5c9a5ca3e5f78691.png" alt="685a854cb16d919d33529a8f5c9a5ca3e5f78691" style="width:600px">
 
-### Modification des controllers et des vues
+### Modification des controllers, services et des vues
 
-* On va maintenant aller modifier les controllers dans notre fichier `app.js` : `ChatsCtrl` va devenir `ShowsCtrl` et `ChatDetailCtrl` va devenir `ShowDetailCtrl`.
-* Et maintenant qu'on a modifié les noms de nos controllers, on va aller dans le fichier `controllers.js` pour supprimer le `AccountCtrl`, changer les noms des 2 autres cités un peu plus haut et finir par enlever la partie `remove`, ce qui donnera ça :
+Les controllers correspondent à la logique de chaque vue. Les notres vont être très simple :
+* `DashCtrl` qui correspond à la page d'accueil n'a pas vraiment de logique propre
+* `Shows` qui correspond à la liste des shows va afficher la liste des shows (et va donc devoir la récupérer)
+* `ShowDetailCtrl` qui correspond à la page d'un spectacle va devoir afficher le spectacle choisi, et plus tard il permettra d'effectuer une réservation.
+
+On va donc faire quelques modifications :
+
+* Dans notre fichier `app.js` : `ChatsCtrl` va devenir `ShowsCtrl` et `ChatDetailCtrl` va devenir `ShowDetailCtrl`.
+* Maintenant qu'on a modifié les noms de nos controllers, on va aller dans le fichier `controllers.js` pour supprimer le `AccountCtrl`, changer les noms des 2 autres cités un peu plus haut et finir par enlever la partie `remove`. Nous allons assigner les données à la variable `$.scope` ce qui permettra de les rendre accessibles dans les vues.
 
 
 
@@ -171,8 +178,163 @@ Voilà ce que donne votre application maintenant :
           });
 
 
+Les services correspondent (dans notre cas) à la récupération des données. Dans ce premier Workshop, nous allons écrire les données en dur dans un fichier, elles seront récupérées sur l'API ultérieurement.
 
-https://github.com/Workshop-Polytechnique/Mobile_Workshop_1/commit/825032e4700b6dac87a1cbd017f98a0e15dfc943
+* On va aller modifier le fichier `services.js`
+    * La factory `Chats` va devenir `Shows`
+    * Nous allons créer une variable `shows` contenant un JSON avec les données correspondant aux spectacles qu'on veut afficher
+    * On va ensuite garder 2 fonctions : `all` qui va permettre de récupérer tous les spectacles (et qui est appelées dans le `ShowsCtrl` et `get` qui va permettre de récupérer un spectacle à partir de son `id`
+
+```
+angular.module('starter.services', [])
+
+.factory('Shows', function() {
+  // Might use a resource here that returns a JSON array
+
+  // Some fake testing data
+  var shows = [
+    {
+      id: 1,
+      name: "Mon premier Show",
+      location: "Salle Pleyel",
+      description: "Concert blabla",
+      capacity: 500,
+      price: 30,
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Salle_Pleyel_5.jpg/220px-Salle_Pleyel_5.jpg",
+      date: "2016-10-30",
+      url: "https://api-shows-tonight.herokuapp.com/shows/1.json"
+    },
+    {
+      id: 2,
+      name: "Sébastien Tellier",
+      location: "Nouveau Casino",
+      description: "L'Aventura",
+      capacity: 500,
+      price: 36,
+      image: "http://www.gqmagazine.fr/uploads/images/201421/cc/l_aventura_de_s__bastien_tellier_7651.jpeg",
+      date: "2016-10-19",
+      url: "https://api-shows-tonight.herokuapp.com/shows/2.json"
+    },
+    {
+      id: 5,
+      name: "Bertrand",
+      location: "Olympia Bruno Coquatrix",
+      description: "Concert de guitare classique",
+      capacity: 10,
+      price: 400,
+      image: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Bob-Marley-in-Concert_Zurich_05-30-80.jpg",
+      date: "2016-11-05",
+      url: "https://api-shows-tonight.herokuapp.com/shows/5.json"
+    }
+  ];
+
+  return {
+    all: function() {
+      return shows;
+    },
+    get: function(showId) {
+      for (var i = 0; i < shows.length; i++) {
+        if (shows[i].id === parseInt(showId)) {
+          return shows[i];
+        }
+      }
+      return null;
+    }
+  };
+});
+``` 
+
+Enfin, nous allons modifier les vues pour les faire correspondre à nos shows.
+
+* Dans la vue `show-detail.html`, nous avons la variable `show` qui est assignée par notre controller `ShowDetailCtrl`.
+    * le titre de la vue va devenir `{{show.name}}``
+    * l'image va devenir `{{show.image}}``
+    * et nous allons mettre la description dans un paragraphe : `{{show.description}}`
+    * enfin, nous allons ajouter un block bouton en se basant sur la [documentation d'Ionic](http://ionicframework.com/docs/components/#block-buttons)
+
+
+        <ion-view view-title="{{show.name}}">
+          <ion-content class="padding">
+            <img ng-src="{{show.image}}" style="width: 64px; height: 64px">
+            <p>
+              {{show.description}}
+            </p>
+            <button class="button button-block button-positive">
+              Réserver
+            </button>
+          </ion-content>
+        </ion-view>
+
+* Dans la vue `tab-shows.html`, nous avons la variable `shows` qui est assignée par notre controller `ShowsCtrl`. 
+    * nous allons itérer sur la variable `shows` avec la `ng-repeat="show in shows"` pour afficher le détail de chaque Show 
+    * le lien va inclure l'id du show et devenir ``href="#/tab/shows/{{show.id}}"``
+    * l'image, le nom et la description vont changer comme précédemment
+
+* Vous trouverez un point complet sur ces modifications dans ce [commit]( https://github.com/Workshop-Polytechnique/Mobile_Workshop_1/commit/825032e4700b6dac87a1cbd017f98a0e15dfc943)
+
+Voilà ce que donne votre application maintenant :
+<img src="tutorial_resources/825032e4700b6dac87a1cbd017f98a0e15dfc943.png" alt="825032e4700b6dac87a1cbd017f98a0e15dfc943" style="width:600px">
+<img src="tutorial_resources/825032e4700b6dac87a1cbd017f98a0e15dfc943_bis.png" alt="825032e4700b6dac87a1cbd017f98a0e15dfc943_bis" style="width:600px">
+
+### Un peu de style pour finir
+
+Nous allons maintenant modifier un peu le style de certaines pages. 
+
+#### En utilisant les styles d'Ionic
+
+Nous allons commencer par modifier la page d'un show en se basant sur des classes Ionic décrites dans la documentation : [les card-showcase](http://ionicframework.com/docs/components/#card-showcase) (allez lire la documentation !).
+
+Voilà ce que va devenir le fichier `show-detail.html` en modifiant la structure en fonction de la documentation et en ajoutant à l'intérieur la date du spectacles :
+
+      <ion-view view-title="{{show.name}}">
+        <ion-content class="padding">
+          <div class="list card">
+            <div class="item">
+              <h2>{{show.name}}</h2>
+              <p>{{show.date}}</p>
+            </div>
+      
+            <div class="item item-body">
+              <img class="full-image" ng-src="{{show.image}}">
+              <p>
+                {{show.description}}
+              </p>
+            </div>
+            <button class="button button-block button-positive">
+              Réserver pour {{show.price}}€
+            </button>
+          </div>
+        </ion-content>
+      </ion-view>
+      
+
+Ce qui doit donner ça : 
+
+<img src="tutorial_resources/3a1ba2aee617e217ad8b60218618ec5c924c0e76.png" alt="3a1ba2aee617e217ad8b60218618ec5c924c0e76" style="width:600px">
+
+#### Puis en modifiant les styles nous mêmes.
+
+* Nous allons commencer par ajouter une image appelée `tonigth.png` au dossier `www/img` que vous pouvez récupérer [ici](https://github.com/Workshop-Polytechnique/Mobile_Workshop_1/raw/master/www/img/tonight.png). 
+* Nous l'appelerons sur la page d'accueil en ajoutant `<img src="img/tonight.png" class="logo" />` (en notant l'ajout de la classe `logo` pour l'identifier.
+* Nous allons aussi ajouter à notre vue une classe `dashboard` pour modifier le style du titre de la page : `<ion-view view-title="Accueil" class="dashboard">` 
+* Enfin, nous allons modifier le fichier `css/style.css` pour lui indiquer que notre image ne doit pas dépasser la largeur de l'écran, et que le titre doit être bleu :
+
+
+
+      /* Empty. Add your own CSS if you like */
+      img.logo {
+        width: 100%;
+      }
+      
+      .dashboard h2 {
+        color: blue;
+      }
+
+
+Ce qui doit donner ça : 
+
+<img src="tutorial_resources/10ed6fd10181146e8639e187ecf7616f8e220f29.png" alt="10ed6fd10181146e8639e187ecf7616f8e220f29" style="width:600px">
+
 
 https://github.com/Workshop-Polytechnique/Mobile_Workshop_1/commit/3a1ba2aee617e217ad8b60218618ec5c924c0e76
 
