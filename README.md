@@ -151,6 +151,25 @@ Voilà ce qu'il faut modifier pour avoir les bonnes routes et les bons fichiers 
 Voilà ce que donne votre application maintenant :
 <img src="tutorial_resources/685a854cb16d919d33529a8f5c9a5ca3e5f78691.png" alt="685a854cb16d919d33529a8f5c9a5ca3e5f78691" style="width:600px">
 
+### Modification des controllers et des vues
+
+* On va maintenant aller modifier les controllers dans notre fichier `app.js` : `ChatsCtrl` va devenir `ShowsCtrl` et `ChatDetailCtrl` va devenir `ShowDetailCtrl`.
+* Et maintenant qu'on a modifié les noms de nos controllers, on va aller dans le fichier `controllers.js` pour supprimer le `AccountCtrl`, changer les noms des 2 autres cités un peu plus haut et finir par enlever la partie `remove`, ce qui donnera ça :
+
+
+
+          angular.module('starter.controllers', [])
+          
+          .controller('DashCtrl', function($scope) {})
+          
+          .controller('ShowsCtrl', function($scope, Shows) {
+            $scope.shows = Shows.all();
+          })
+          
+          .controller('ShowDetailCtrl', function($scope, $stateParams, Shows) {
+            $scope.show = Shows.get($stateParams.showId);
+          });
+
 
 
 https://github.com/Workshop-Polytechnique/Mobile_Workshop_1/commit/825032e4700b6dac87a1cbd017f98a0e15dfc943
