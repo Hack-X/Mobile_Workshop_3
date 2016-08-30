@@ -82,9 +82,7 @@ Voilà ce qu'il faut modifier pour avoir les bonnes routes et les bons fichiers 
     * tab.chats : `chats` devient partout `shows`, on va donc avoir un `tab.shows`, dont l'url est `/shows` et la vue associée est `templates/tab-shows.html`. Dans un temps 1, on ne va pas modifier le controller associé.
     * tab.chat-detail : `tab.chat-detail` va devenir `tab.show-detail`, l'url va devenir `/shows/:showId` et la vue associée est `templates/show-detail.html`. Dans un temps 1, on ne va pas modifier le controller associé.
 
-
-
-
+```
 
           .state('tab.dash', {
             url: '/dash',
@@ -113,6 +111,7 @@ Voilà ce qu'il faut modifier pour avoir les bonnes routes et les bons fichiers 
                 }
               }
           });
+``` 
 
 * On va ensuite renommer les 2 fichiers de templates qu'on vient de décrire dans le dossier `templates` et on va supprimer le fichier `tab-account.html`.
 * Dans le fichier `tab-dash.html`, on va modifier le contenu pour lui mettre un titre adapté et un contenu correspondant à notre application :
