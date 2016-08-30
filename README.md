@@ -84,6 +84,8 @@ Voilà ce qu'il faut modifier pour avoir les bonnes routes et les bons fichiers 
 
 
 
+
+
           .state('tab.dash', {
             url: '/dash',
             views: {
