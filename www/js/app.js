@@ -55,7 +55,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-shows': {
           templateUrl: 'templates/tab-shows.html',
-          controller: 'ChatsCtrl'
+          controller: 'ShowsCtrl'
         }
       }
     })
@@ -64,7 +64,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-shows': {
           templateUrl: 'templates/show-detail.html',
-          controller: 'ChatDetailCtrl'
+          controller: 'ShowDetailCtrl'
         }
       }
   });
