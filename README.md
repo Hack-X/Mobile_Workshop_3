@@ -83,6 +83,7 @@ Voilà ce qu'il faut modifier pour avoir les bonnes routes et les bons fichiers 
     * tab.chat-detail : `tab.chat-detail` va devenir `tab.show-detail`, l'url va devenir `/shows/:showId` et la vue associée est `templates/show-detail.html`. Dans un temps 1, on ne va pas modifier le controller associé.
 
 
+
       .state('tab.dash', {
         url: '/dash',
         views: {
@@ -115,15 +116,14 @@ Voilà ce qu'il faut modifier pour avoir les bonnes routes et les bons fichiers 
 * Dans le fichier `tab-dash.html`, on va modifier le contenu pour lui mettre un titre adapté et un contenu correspondant à notre application :
 
 
-
-      <ion-view view-title="Accueil">
-        <ion-content class="padding">
-          <h2>Bienvenue dans ShowTonight</h2>
-          <p>
-          Vous trouverez dans cette application des idées de spectacles fantastiques à aller voir.
-          </p>
-        </ion-content>
-      </ion-view>
+        <ion-view view-title="Accueil">
+          <ion-content class="padding">
+            <h2>Bienvenue dans ShowTonight</h2>
+            <p>
+            Vous trouverez dans cette application des idées de spectacles fantastiques à aller voir.
+            </p>
+          </ion-content>
+        </ion-view>
       
       
 * Dans le fichier `tab-shows.html`, on va simplement modifier le titre pour le moment en précisant `view-title="Spectacles"`
