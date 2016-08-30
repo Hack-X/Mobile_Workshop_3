@@ -148,6 +148,10 @@ Voilà ce qu'il faut modifier pour avoir les bonnes routes et les bons fichiers 
 
 * Vous trouverez un point complet sur les modifications dans ce [commit]( https://github.com/Workshop-Polytechnique/Mobile_Workshop_1/commit/685a854cb16d919d33529a8f5c9a5ca3e5f78691)
 
+Voilà ce que donne votre application maintenant :
+<img src="tutorial_resources/685a854cb16d919d33529a8f5c9a5ca3e5f78691.png" alt="685a854cb16d919d33529a8f5c9a5ca3e5f78691" style="width:600px">
+
+
 
 https://github.com/Workshop-Polytechnique/Mobile_Workshop_1/commit/825032e4700b6dac87a1cbd017f98a0e15dfc943
 
