@@ -13,3 +13,8 @@ Pré-requis :
 
 * Mobile Workshop 1
 * Si votre API n'est pas prête, vous pouvez utiliser l'URL `api-shows-tonight.herokuapp.com` pour avancer sur ce workshop.
+
+
+Ressources :
+
+* http://mcgivery.com/ionic-using-factories-and-web-services-for-dynamic-data/
