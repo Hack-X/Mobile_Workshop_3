@@ -82,6 +82,85 @@ book: function(showId, user_name, seats) {
       });
     }
 ```
+Cette fonction prend en paramètre l'identifiant du spectacle, le nom d'utilisateur ainsi que le nombre de siège. Ensuite, elle effectue une requête de type `POST` sur l'url `https://api-shows-tonight.herokuapp.com/shows/ID_DU_SHOW/book.json` en lui passant les paramètres `{booking: {user_name: user_name, seats: seats}}` qui ont été défini par l'API.
+Nous utiliserons cette fonction pour effectuer la réservation depuis le controller.
+
+### Le modal
+
+Pour effectuer une réservation, il nous faut un nom et choisir le nombre de sièges. Nous allons créer un "modal" ou "popup" au moment de cliquer sur le bouton réserver afin de pouvoir choisir le nombre de siège et créer son nom.
+
+* Tout d'abord, nous allons créer le template de ce modal. Il faut pour ça créer un fichier `modal-book.html` dans le dossier `templates` avec un contenu basique (comme donné dans le documentation).
+```
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">My Modal title</h1>
+    </ion-header-bar>
+    <ion-content>
+      Hello!
+    </ion-content>
+  </ion-modal-view>
+``` 
+* Ensuite, dans le controller du fichier `js/controllers` on va ajouter des fonctions permettant de l'ouvrir.
+  * tout d'abord on signale à Ionic / Angular qu'on a besoin de `$ionicModal` en ajoutant le paramètre à la définition du `ShowDetailCtrl` : `.controller('ShowDetailCtrl', function($scope, $stateParams, $ionicModal, Shows) {`
+  * ensuite, on va créer le modal en lui fournissant le `$scope` afin qu'il soit identique et  en lui donnant le nom de notre template. Dans le controller on ajoute donc : 
+  
+  ``` 
+    $ionicModal.fromTemplateUrl('templates/modal-book.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  ``` 
+  * enfin, on va ajouter des fonction permettant d'ouvrir et fermer ce modal dans le controller comme indiqué dans la documentation 
+  
+``` 
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+```
+
+* Maintenant que notre modal est prêt, on va déclencher son ouverture au clic sur le bouton réserver en allant modifier le template `templates/show-detail.html` : 
+``` 
+<button class="button button-block button-positive" ng-click="openModal()">
+  Réserver pour {{show.price}}€
+</button>
+```
+
+Maintenant, on a un modal basique qui s'ouvre au clic sur le bouton : 
+
+<img src="tutorial_resources/modal_simple.png" alt="Github" style="width:600px">
+
+### Création du formulaire dans notre modal.
+
+On va commencer par 
+
+On va maintenant ajouter 2 champs de formulaires dans notre modal. On peut commencer par mettre celui du nom :
+```
+<label class="item item-input">
+  <span class="input-label">Votre nom</span>
+  <input type="text" ng-model="user_name">
+</label>
+``` 
+Comme précisé dans la documentation des `inputs`, on a mis notre formulaire à côté d'un label. On lui a ensuite assigné un `ng-model` à `user_name` : cela signifie que quelque soit ce que l'utilisateur tapera dans cette case, ce sera enregistré dans une variable `user_name`.
+
+On fait de même pour le nombre de places : 
+```
+  <label class="item item-input">
+    <span class="input-label">Nombre de places</span>
+    <input type="number" ng-model="seats">
+  </label>
+```
+
+Pour vérifier que ce que rentre l'utilisateur est bien pris en compte, on va créer un bouton et modifier son contenu du bouton en fonction de ce qu'il tape : 
+```
+<button class="button button-block button-positive" ng-disabled="!seats || !user_name">
+  Réserver au nom de {{user_name || ''}} pour {{show.price * seats || 0}}€
+</button>
+```
 
 
 
