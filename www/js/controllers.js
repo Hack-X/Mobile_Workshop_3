@@ -36,7 +36,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('MapCtrl', function($scope, $ionicLoading, Shows) {
+.controller('MapCtrl', function($scope, $ionicLoading, $state, Shows) {
   $scope.shows = [];
   Shows.all().then(function(apiShows) {
     $scope.shows = apiShows;
@@ -71,10 +71,13 @@ angular.module('starter.controllers', [])
   $scope.addMarkers = function() {
     if($scope.shows.length == 0) return;
     $scope.shows.forEach(function(show) {
-      var newMarker = new google.maps.Marker({
+      var marker = new google.maps.Marker({
           position: new google.maps.LatLng(show.lat, show.lng),
           map: $scope.map,
           label: show.name
+      });
+      google.maps.event.addListener(marker, 'click', function(){
+        $state.go('tab.map-detail', {showId: show.id});
       });
     });
   }
