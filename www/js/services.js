@@ -20,6 +20,12 @@ angular.module('starter.services', [])
         }
       }
       return null;
+    },
+    book: function(showId, user_name, seats) {
+      return $http.post("https://api-shows-tonight.herokuapp.com/shows/" + showId + "/book.json", {booking: {user_name: user_name, seats: seats}}).then(function(response){
+        booking = response.data;
+        return booking;
+      });
     }
   };
 });
