@@ -48,6 +48,8 @@ Grâce à cette première étape, on récupère bien les données comme on peut 
 
 Par contre, on ne voit pas les spectacles dans l'application. C'est à cause de nos promesses : auparavant, on récupérait instantanément la liste des spectacles, maintenant cette récupération est *asynchrone*. On va donc devoir modifier très légèrement notre controller pour prendre en compte cette modification.
 
+### Modification du controller
+
 * Dans le fichier `www/js/controllers.js`, on va modifier la ligne par `$scope.shows = Shows.all();` par ce code, prenant en compte les promesses :
 ```
 $scope.shows = [];
@@ -57,6 +59,15 @@ $scope.shows = [];
 ```
 
 Maintenant, il y aura quelques instants sans aucun spectacles (car on commence par définir la variable `$scope.shows` vide), et dès que l'appel sur l'API aura fonctionné, on pourra voir la liste des spectacles en direct depuis l'API !
+
+
+## Etape 2 : Réservation d'une place 
+
+On a appris à faire un appel `GET` simple permettant de récupérer des données. Maintenant, on va aller effectuer un appel plus complexe pour y envoyer des données, un appel `POST`.
+
+### Le service
+
+Une fois encore, on va commencer par modifier notre fichier de `services` ppur y ajouter une fonction permettant de réserver.
 
 
 
