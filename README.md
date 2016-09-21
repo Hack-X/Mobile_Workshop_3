@@ -65,9 +65,25 @@ Maintenant, il y aura quelques instants sans aucun spectacles (car on commence p
 
 On a appris à faire un appel `GET` simple permettant de récupérer des données. Maintenant, on va aller effectuer un appel plus complexe pour y envoyer des données, un appel `POST`.
 
+### Ressources 
+
+Si tout n'est pas toujours expliqué en détail, c'est que l'information se trouve dans la documentations d'Ionic.
+* Concernant les `modal`, tout est expliqué ici : (http://ionicframework.com/docs/api/service/$ionicModal/)[http://ionicframework.com/docs/api/service/$ionicModal/]
+* Concernant les `ìnputs`, on trouve de la documentation ici : (http://ionicframework.com/html5-input-types/#text)[http://ionicframework.com/html5-input-types/#text] et 
+
 ### Le service
 
-Une fois encore, on va commencer par modifier notre fichier de `services` ppur y ajouter une fonction permettant de réserver.
+Une fois encore, on va commencer par modifier notre fichier de `services` ppur y ajouter une fonction permettant de réserver. A la suite des méthodes `all` et `get` on va ajouter :
+```
+book: function(showId, user_name, seats) {
+      return $http.post("https://api-shows-tonight.herokuapp.com/shows/" + showId + "/book.json", {booking: {user_name: user_name, seats: seats}}).then(function(response){
+        booking = response.data;
+        return booking;
+      });
+    }
+```
+
+
 
 
 
