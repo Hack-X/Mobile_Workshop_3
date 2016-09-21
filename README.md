@@ -17,6 +17,8 @@ Pré-requis :
 Ressources :
 
 * http://mcgivery.com/ionic-using-factories-and-web-services-for-dynamic-data/
+* L'onglet Network de l'inspecteur de Google Chrome
+* La documentation d'ionic : http://ionicframework.com/docs
 
 
 ## Etape 1 : Récupération de la liste
@@ -60,6 +62,7 @@ $scope.shows = [];
 
 Maintenant, il y aura quelques instants sans aucun spectacles (car on commence par définir la variable `$scope.shows` vide), et dès que l'appel sur l'API aura fonctionné, on pourra voir la liste des spectacles en direct depuis l'API !
 
+*Remarque importante* : nous chargeons la liste des spectacles uniquement au moment où on affiche la liste des spectacles et pas quand on affiche la page `show-detail`. Cela ne sera pas gênant pour l'utilisation de l'application dans la vraie vie, mais quand vous dévelopez, si vous raffraichissez la page d'un spectacle il peut ne pas y avoir de contenu. Il suffit de changer l'url en retirant la partie `#/tab/shows/1` pour revenir au départ.
 
 ## Etape 2 : Réservation d'une place 
 
@@ -136,7 +139,7 @@ Maintenant, on a un modal basique qui s'ouvre au clic sur le bouton :
 
 ### Création du formulaire dans notre modal.
 
-On va commencer par 
+On va commencer par mettre le nom du spectacle en titre de la page : `<h1 class="title">{{show.name}}</h1>` ainsi qu'un bouton permettant de fermer le modal juste à côté dans le header aussi : `<button class="button button-secondary" ng-click="modal.hide()">Cancel</button>`
 
 On va maintenant ajouter 2 champs de formulaires dans notre modal. On peut commencer par mettre celui du nom :
 ```
@@ -155,14 +158,30 @@ On fait de même pour le nombre de places :
   </label>
 ```
 
-Pour vérifier que ce que rentre l'utilisateur est bien pris en compte, on va créer un bouton et modifier son contenu du bouton en fonction de ce qu'il tape : 
+Pour vérifier que ce que rentre l'utilisateur est bien pris en compte, on va créer un bouton et modifier son contenu du bouton en fonction de ce qu'il tape. Si il n'y a pas de contenu, il sera désactivé (via le `ng-disabled`), et ensuite il verra son nom s'afficher et le prix en direct.
 ```
 <button class="button button-block button-positive" ng-disabled="!seats || !user_name">
   Réserver au nom de {{user_name || ''}} pour {{show.price * seats || 0}}€
 </button>
 ```
 
+Et on est quasiment bon pour le modal, qui devrait ressembler à ça : 
+<img src="tutorial_resources/modal_clean.png" alt="modal_clean" style="width:600px">
 
+### Connexion avec le service de réservation
 
+On va retourner maintenant dans le fichier `controllers.js` pour y créer une nouvelle fonction `book` qui va appeler le service créé au début du tutorial.
+Voilà à quoi ressemble la fonction :
+```
+$scope.book = function(user_name, seats) {
+    return Shows.book($stateParams.showId, user_name, seats)
+    .then(function(booking) {
+      console.log("Booking", booking);
+      alert("Votre réservation a bien été prise en compte avec le numéro " + booking.id);
+      $scope.closeModal();
+    })
+  }
+```
 
+On va maintenant la brancher avec le bouton de la modal en ajoutant `ng-click="book(user_name, seats)"` et voilà, le tour est joué.
 
