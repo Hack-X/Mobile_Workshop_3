@@ -77,7 +77,7 @@ angular.module('starter.controllers', [])
           label: show.name
       });
       google.maps.event.addListener(marker, 'click', function(){
-        $state.go('tab.map-detail', {showId: show.id});
+        $state.go('tab.show-detail', {showId: show.id});
       });
     });
   }
